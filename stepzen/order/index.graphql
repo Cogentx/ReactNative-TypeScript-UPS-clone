@@ -1,0 +1,15 @@
+type Order {
+  Address: String;
+  City:String;
+  Lat: Float;
+  Lng: Float;
+  carrier: String;
+  createdAt: Date;
+  shippingCost: Int;
+  trackingId: String;
+}
+
+type Query {
+  getOrders: JSON
+    @rest(endpoint: "https://portfolio-clones.firebaseio.com/orders.json")
+}
