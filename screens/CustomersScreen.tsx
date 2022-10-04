@@ -24,7 +24,7 @@ const CustomersScreen = () => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor:"#59C1CC"}}>
       <Image
         source={{ uri: 'https://i.imgur.com/uU8GTZM.jpeg' }}
         containerStyle={tw('w-full h-64')}
