@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, Text } from 'react-native';
+import { ActivityIndicator, ScrollView } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { useTailwind } from 'tailwind-rn/dist';
 import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
@@ -24,9 +24,13 @@ const CustomersScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView>
-      <Text>Customers</Text>
-    </SafeAreaView>
+    <ScrollView>
+      <Image
+        source={{ uri: 'https://i.imgur.com/uU8GTZM.jpeg' }}
+        containerStyle={tw('w-full h-64')}
+        PlaceholderContent={<ActivityIndicator />}
+      />
+    </ScrollView>
   );
 };
 
