@@ -1,0 +1,31 @@
+# Notes:
+# - trackingId passed to stepzen @materializer function
+# - trackingItems is a field we create to link to TrackingItems it does not exist on Order endpoint
+# - getTrackingItemsById is query insider TrackingItems endpoint
+type Order {
+  Address: String
+  City: String
+  Lat: Float
+  Lng: Float
+  carrier: String
+  createdAt: Date
+  shippingCost: Int
+  trackingId: String
+  trackingItems: TrackingItems
+    @materializer(query: "getTrackingItemById", arguments: [{ name: "id", field: "trackingId" }])
+}
+
+type OrderList {
+  name: ID
+  value: Order
+}
+
+type Query {
+  getOrderById(id: ID!): Order @rest(endpoint: "https://portfolio-clones.firebaseio.com/orders/$id.json")
+
+  getOrders: [OrderList]
+    @rest(
+      endpoint: "https://portfolio-clones.firebaseio.com/orders.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray" }]
+    )
+}
