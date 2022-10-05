@@ -4,13 +4,25 @@ type Items {
   price: Float
   quantity: Int
 }
-type TrackingItemsList {
+
+type TrackingItems {
   customer_id: String
   items: [Items]
 }
 
-# Dynamic endpoint
+type TrackingItemsList {
+  name: ID
+  value: TrackingItems
+}
+
+# Dynamic endpoint - 'id' will be passed in from qraphql for Order
 type Query {
-  getTrackingItemsById(id: ID!): TrackingItemsList
+  getTrackingItemById(id: ID!): TrackingItems
     @rest(endpoint: "https://portfolio-clones.firebaseio.com/trackingItems/$id.json")
+
+  getTrackingItems: [TrackingItemsList]
+    @rest(
+      endpoint: "https://portfolio-clones.firebaseio.com/trackingItems.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray" }]
+    )
 }
