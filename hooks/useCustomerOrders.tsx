@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { GET_ORDERS } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
 
-const useOrders = () => {
+const useCustomerOrders = (userId: string) => {
   const { loading, error, data } = useQuery(GET_ORDERS);
   const [orders, setOrders] = useState<Order[]>([]);
 
@@ -26,12 +26,15 @@ const useOrders = () => {
       trackingItems: value.trackingItems,
     }));
 
-    setOrders(orders);
-  }, [data]);
+    // filter out orders only for 'userId' passed in hook
+    const customerOrder = orders.filter((order) => order.trackingItems.customer_id === userId);
+
+    setOrders(customerOrder);
+  }, [data, userId]);
 
   // return 'loading' and 'error' from GraphQL
   // return 'orders' from updated state
   return { loading, error, orders };
 };
 
-export default useOrders;
+export default useCustomerOrders;
