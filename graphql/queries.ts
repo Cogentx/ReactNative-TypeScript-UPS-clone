@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 
-export const GET_CUSTOMERS = gql`
-  query GetCustomers {
+export const GET_QUERY = gql`
+  query MyQuery {
     getCustomers {
       name
       value {

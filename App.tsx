@@ -4,11 +4,13 @@ import { StyleSheet } from 'react-native';
 import { TailwindProvider } from 'tailwind-rn';
 import RootNavigator from './navigator/RootNavigator';
 import utilities from './tailwind.json';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/client';
+
 
 // use stepzen api created in './stepzen'
+// NOTE: when using iOS device on local WiFi; use the IP address that Expo Metro is using (your local wifi IP -- NOT LocalHost); keep same port number
 const client = new ApolloClient({
-  uri: 'http://localhost:5001/api/dev-zen',
+  uri: `http://192.168.2.12:5001/api/dev-zen`,
   cache: new InMemoryCache(),
 });
 
