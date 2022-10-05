@@ -7,7 +7,3 @@ type CustomerList = {
   name: ID;
   value: Customer;
 };
-
-type Order = {
-  
-}
