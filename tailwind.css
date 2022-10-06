@@ -14,6 +14,18 @@
   position: relative
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem
+}
+
+.ml-5 {
+  margin-left: 1.25rem
+}
+
+.ml-auto {
+  margin-left: auto
+}
+
 .block {
   display: block
 }
@@ -38,6 +50,10 @@
   width: 100%
 }
 
+.rounded-lg {
+  border-radius: 0.5rem
+}
+
 .border {
   border-width: 1px
 }
@@ -45,6 +61,10 @@
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.p-5 {
+  padding: 1.25rem
 }
 
 .px-10 {

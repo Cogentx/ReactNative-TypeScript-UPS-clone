@@ -45,18 +45,14 @@ const CustomersScreen = () => {
 
       {loading && <Text>Loading...</Text>}
 
-      {error && <Text>{JSON.stringify(error, null, 2)}</Text>}
+      {/* rename 'name' to 'ID' and deconstruct 'value' to 'email' and 'name' */}
 
-      {data && <Text>{JSON.stringify(data, null, 2)}</Text>}
+      {data?.getCustomers.map(({ name: ID, value: { email, name } }: CustomerResponse) => (
+        <CustomerCard key={ID} userId={ID} email={email} name={name} />
+      ))}
+      
     </ScrollView>
   );
 };
 
 export default CustomersScreen;
-
-// {/* rename 'name' to 'ID' and deconstruct 'value' to 'email' and 'name' */}
-// {
-//   data?.getCustomers.map(({ name: ID, value: { email, name } }: CustomerResponse) => (
-//     <CustomerCard key={ID} userId={ID} email={email} name={name} />
-//   ));
-// }
