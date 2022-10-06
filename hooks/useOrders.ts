@@ -14,7 +14,7 @@ const useOrders = () => {
     // each array element is an object with key of 'value'
     // destructure 'value'
     // return array of 'orders'
-    const orders: Order[] = data.getOrders().map(({ value }: OrderResponse) => ({
+    const orders: Order[] = data.getOrders.map(({ value }: OrderResponse) => ({
       Address: value.Address,
       City: value.City,
       Lat: value.Lat,
