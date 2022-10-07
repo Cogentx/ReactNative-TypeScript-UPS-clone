@@ -18,20 +18,23 @@ const CustomerCard = ({ userId, email, name }: Props) => {
 
   return (
     <TouchableOpacity>
-      <Card containerStyle={tw(`p-5 rounded-lg`)}>
+      <Card containerStyle={tw('p-5 rounded-lg')}>
         <View>
-          <View>
-            <Text>{name}</Text>
-            <Text>ID: {userId}</Text>
-          </View>
+          <View style={tw('flex-row justify-between')}>
+            <View>
+              <Text style={tw('text-2xl font-bold')}>{name}</Text>
+              {/* combine inline styles with 'tw' by using an array */}
+              <Text style={[tw('text-sm'), { color: '#59C1CC' }]}>ID: {userId}</Text>
+            </View>
 
-          <View>
-            <Text>{loading ? 'Loading...' : `${orders.length} x`}</Text>
-            <Icon style={tw('mb-5 ml-auto')} name="box" type="entypo" color="#59C1CC" size={50} />
+            <View style={tw('flex-row items-center justify-end')}>
+              <Text style={{color: '#59C1CC'}}>{loading ? 'Loading...' : `${orders.length} x`}</Text>
+              <Icon style={tw('mb-5 ml-auto')} name="box" type="entypo" color="#59C1CC" size={50} />
+            </View>
           </View>
         </View>
 
-        <Card.Divider/>
+        <Card.Divider />
 
         <Text>{email}</Text>
       </Card>

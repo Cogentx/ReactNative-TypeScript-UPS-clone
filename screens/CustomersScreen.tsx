@@ -47,10 +47,11 @@ const CustomersScreen = () => {
 
       {/* rename 'name' to 'ID' and deconstruct 'value' to 'email' and 'name' */}
 
-      {data?.getCustomers.map(({ name: ID, value: { email, name } }: CustomerResponse) => (
-        <CustomerCard key={ID} userId={ID} email={email} name={name} />
-      ))}
-      
+      {data?.getCustomers
+        ?.filter((customer: CustomerList) => customer.value.name.includes(input))
+        .map(({ name: ID, value: { email, name } }: CustomerResponse) => (
+          <CustomerCard key={ID} userId={ID} email={email} name={name} />
+        ))}
     </ScrollView>
   );
 };
